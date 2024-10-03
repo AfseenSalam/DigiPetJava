@@ -62,14 +62,14 @@ public class AccountController {
     public Account postByAction(@PathVariable Long id,@RequestParam String action) {
         Account UpdateAccount = accountRepo.findById(id).orElse(null);
         int newCredit =0;
-        if(action == "CREATE"){
+        if(action.equals("CREATE")){
             newCredit=UpdateAccount.getCredits()-5;
         }
-        else if(action == "HEAL"){
+        else if(action.equals("HEAL")){
            newCredit = UpdateAccount.getCredits()-1;
-        }else if(action == "TRAIN"){
+        }else if(action.equals("TRAIN")){
             newCredit = UpdateAccount.getCredits()-1;
-         }else if(action == "BATTLE"){
+         }else if(action.equals("BATTLE")){
             newCredit = UpdateAccount.getCredits()-2;
          }
          UpdateAccount.setCredits(newCredit);
@@ -80,14 +80,14 @@ public class AccountController {
     public Account postMethodName(@PathVariable("apiKey") String apiKey,@RequestParam String action) {
         Account UpdateAccount= accountRepo.findByApiKey(apiKey);
         int newCredit =0;
-        if(action == "CREATE"){
+        if(action.equals("CREATE")){
             newCredit=UpdateAccount.getCredits()-5;
         }
-        else if(action == "HEAL"){
+        else if(action.equals("HEAL")){
            newCredit = UpdateAccount.getCredits()-1;
-        }else if(action == "TRAIN"){
+        }else if(action.equals("TRAIN")){
             newCredit = UpdateAccount.getCredits()-1;
-         }else if(action == "BATTLE"){
+         }else if(action.equals("BATTLE")){
             newCredit = UpdateAccount.getCredits()-2;
          }
          UpdateAccount.setCredits(newCredit);
